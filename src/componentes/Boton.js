@@ -1,4 +1,8 @@
 export const Boton = (props) => {
-  const { texto, className } = props;
-  return <button className={className}>{texto}</button>;
+  const { tipo, texto, className } = props;
+  return (
+    <button type={tipo} className={className}>
+      {texto}
+    </button>
+  );
 };

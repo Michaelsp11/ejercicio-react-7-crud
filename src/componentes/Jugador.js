@@ -5,7 +5,7 @@ export const Jugador = (props) => {
   const { jugador } = props;
   const { id, nombre, apellidos, edad, posicion, opinion } = jugador;
   return (
-    <li class="list-group-item">
+    <li className="list-group-item">
       <div>
         <Dato campo="Nombre" valor={nombre} />
         <Dato campo="Apellidos" valor={apellidos} />
