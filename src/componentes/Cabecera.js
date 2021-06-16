@@ -1,4 +1,6 @@
-export const Cabecera = () => {
+import { Boton } from "./Boton";
+
+export const Cabecera = (props) => {
   return (
     <header className="container mt-5">
       <div className="row align-items-center">
@@ -6,7 +8,7 @@ export const Cabecera = () => {
           <h1>Lista de jugadores de fútbol:</h1>
         </div>
         <div className="col col-sm-4 d-flex justify-content-end">
-          <button className="btn btn-success">Crear</button>
+          <Boton className="btn btn-success" texto="Crear" />
         </div>
       </div>
     </header>
