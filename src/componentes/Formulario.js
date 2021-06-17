@@ -2,8 +2,14 @@ import { Boton } from "./Boton";
 import { useFormulario } from "../hooks/useFormulario";
 import { useCallback, useEffect } from "react";
 export const Formulario = (props) => {
-  const { jugador, guardarDatos, botonDesactivado, setBotonDesactivado } =
-    props;
+  const {
+    jugador,
+    botonDesactivado,
+    setBotonDesactivado,
+    showFormulario,
+    setShowFormulario,
+    guardarDatos,
+  } = props;
   const { datos, setDato } = useFormulario(jugador);
   const { id, nombre, apellidos, edad, posicion, opinion } = datos;
   const comprobarDatos = useCallback(() => {
@@ -15,6 +21,8 @@ export const Formulario = (props) => {
       opinion !== ""
     ) {
       setBotonDesactivado(false);
+    } else {
+      setBotonDesactivado(true);
     }
   }, [nombre, apellidos, edad, posicion, opinion, setBotonDesactivado]);
   useEffect(() => {
@@ -90,12 +98,21 @@ export const Formulario = (props) => {
           />
         </div>
         <Boton
+          texto={"Volver"}
+          className="btn btn-primary"
+          accion={(e) => {
+            e.preventDefault();
+            setShowFormulario(false);
+          }}
+        />
+        <Boton
           texto={id !== null ? "Editar" : "Crear"}
           className="btn btn-primary"
           botonDesactivado={botonDesactivado}
           accion={(e) => {
             e.preventDefault();
             guardarDatos(datos);
+            setShowFormulario(false);
           }}
         />
       </form>

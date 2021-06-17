@@ -22,7 +22,6 @@ function App() {
     } else {
       crearJugador(nuevoJugador);
     }
-    setShowFormulario(false);
   };
   const getLastId = () =>
     jugadores.reduce((acumulador, jugador) => {
@@ -75,9 +74,11 @@ function App() {
               <>
                 <Formulario
                   jugador={jugador}
-                  guardarDatos={guardarJugador}
                   botonDesactivado={botonDesactivado}
                   setBotonDesactivado={setBotonDesactivado}
+                  showFormulario={showFormulario}
+                  setShowFormulario={setShowFormulario}
+                  guardarDatos={guardarJugador}
                 />
               </>
             )}
