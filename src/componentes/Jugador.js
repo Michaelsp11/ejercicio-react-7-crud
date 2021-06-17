@@ -2,7 +2,7 @@ import { Boton } from "./Boton";
 import { Dato } from "./Dato";
 
 export const Jugador = (props) => {
-  const { jugador, setJugador, setShowFormulario } = props;
+  const { jugador, setJugador, setShowFormulario, eliminarJugador } = props;
   const { id, nombre, apellidos, edad, posicion, opinion } = jugador;
   const editarJugador = (e) => {
     e.preventDefault();
@@ -24,7 +24,11 @@ export const Jugador = (props) => {
           texto="Editar"
           accion={editarJugador}
         />
-        <Boton className="btn btn-danger" texto="Borrar" />
+        <Boton
+          className="btn btn-danger"
+          texto="Borrar"
+          accion={() => eliminarJugador(id)}
+        />
       </div>
     </li>
   );

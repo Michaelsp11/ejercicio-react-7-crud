@@ -8,6 +8,7 @@ export const Formulario = (props) => {
     posiciones,
     setBotonDesactivado,
     setShowFormulario,
+    vaciarJugador,
     guardarDatos,
   } = props;
   const { datos, setDato } = useFormulario(jugador);
@@ -107,6 +108,7 @@ export const Formulario = (props) => {
           className="btn btn-primary"
           accion={(e) => {
             e.preventDefault();
+            vaciarJugador();
             setShowFormulario(false);
           }}
         />

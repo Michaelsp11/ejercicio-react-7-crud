@@ -23,14 +23,7 @@ function App() {
     } else {
       crearJugador(nuevoJugador);
     }
-    setJugador({
-      id: null,
-      nombre: "",
-      apellidos: "",
-      edad: 0,
-      posicion: "",
-      opinion: "",
-    });
+    vaciarJugador();
   };
   const getLastId = () =>
     jugadores.reduce((acumulador, jugador) => {
@@ -60,6 +53,19 @@ function App() {
       })
     );
   };
+  const eliminarJugador = (id) => {
+    setJugadores(jugadores.filter((jugador) => jugador.id !== id));
+  };
+  const vaciarJugador = () => {
+    setJugador({
+      id: null,
+      nombre: "",
+      apellidos: "",
+      edad: 0,
+      posicion: "",
+      opinion: "",
+    });
+  };
   return (
     <>
       <Cabecera
@@ -79,6 +85,7 @@ function App() {
                       jugador={jugador}
                       setJugador={setJugador}
                       setShowFormulario={setShowFormulario}
+                      eliminarJugador={eliminarJugador}
                     />
                   ))}
                 </ul>
@@ -92,6 +99,7 @@ function App() {
                   posiciones={posiciones}
                   setBotonDesactivado={setBotonDesactivado}
                   setShowFormulario={setShowFormulario}
+                  vaciarJugador={vaciarJugador}
                   guardarDatos={guardarJugador}
                 />
               </>
