@@ -65,7 +65,12 @@ function App() {
                 <h2>Lista de jugadores:</h2>
                 <ul className="list-group">
                   {jugadores.map((jugador) => (
-                    <Jugador key={jugador.id} jugador={jugador} />
+                    <Jugador
+                      key={jugador.id}
+                      jugador={jugador}
+                      setJugador={setJugador}
+                      setShowFormulario={setShowFormulario}
+                    />
                   ))}
                 </ul>
               </>
@@ -76,7 +81,6 @@ function App() {
                   jugador={jugador}
                   botonDesactivado={botonDesactivado}
                   setBotonDesactivado={setBotonDesactivado}
-                  showFormulario={showFormulario}
                   setShowFormulario={setShowFormulario}
                   guardarDatos={guardarJugador}
                 />

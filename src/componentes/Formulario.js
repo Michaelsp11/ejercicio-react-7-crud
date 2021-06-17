@@ -6,7 +6,6 @@ export const Formulario = (props) => {
     jugador,
     botonDesactivado,
     setBotonDesactivado,
-    showFormulario,
     setShowFormulario,
     guardarDatos,
   } = props;
