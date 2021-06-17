@@ -6,7 +6,7 @@ export const useFormulario = (datosJugador) => {
     setDatos({
       ...datos,
       [e.target.id]:
-        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+        e.target.type === "number" ? e.target.valueAsNumber : e.target.value,
     });
   };
   return {

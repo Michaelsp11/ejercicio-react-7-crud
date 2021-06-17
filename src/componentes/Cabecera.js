@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Boton } from "./Boton";
 
 export const Cabecera = (props) => {
@@ -23,4 +24,8 @@ export const Cabecera = (props) => {
       </div>
     </header>
   );
+};
+Cabecera.propTypes = {
+  showFormulario: PropTypes.bool.isRequired,
+  setShowFormulario: PropTypes.func.isRequired,
 };

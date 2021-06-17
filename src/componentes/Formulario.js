@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Boton } from "./Boton";
 import { useFormulario } from "../hooks/useFormulario";
 import { useCallback, useEffect } from "react";
@@ -17,7 +18,7 @@ export const Formulario = (props) => {
     if (
       nombre !== "" &&
       apellidos !== "" &&
-      edad !== "" &&
+      edad !== 0 &&
       posicion !== "" &&
       opinion !== ""
     ) {
@@ -125,4 +126,20 @@ export const Formulario = (props) => {
       </form>
     </>
   );
+};
+Formulario.propTypes = {
+  jugador: PropTypes.shape({
+    id: PropTypes.number,
+    nombre: PropTypes.string.isRequired,
+    apellidos: PropTypes.string.isRequired,
+    edad: PropTypes.number.isRequired,
+    posicion: PropTypes.string.isRequired,
+    opinion: PropTypes.string.isRequired,
+  }).isRequired,
+  botonDesactivado: PropTypes.bool.isRequired,
+  posiciones: PropTypes.array.isRequired,
+  setBotonDesactivado: PropTypes.func.isRequired,
+  setShowFormulario: PropTypes.func.isRequired,
+  vaciarJugador: PropTypes.func.isRequired,
+  guardarDatos: PropTypes.func.isRequired,
 };

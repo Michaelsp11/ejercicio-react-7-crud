@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Boton } from "./Boton";
 import { Dato } from "./Dato";
 
@@ -32,4 +33,17 @@ export const Jugador = (props) => {
       </div>
     </li>
   );
+};
+Jugador.propTypes = {
+  jugador: PropTypes.shape({
+    id: PropTypes.number,
+    nombre: PropTypes.string.isRequired,
+    apellidos: PropTypes.string.isRequired,
+    edad: PropTypes.number.isRequired,
+    posicion: PropTypes.string.isRequired,
+    opinion: PropTypes.string.isRequired,
+  }).isRequired,
+  setJugador: PropTypes.func.isRequired,
+  setShowFormulario: PropTypes.func.isRequired,
+  eliminarJugador: PropTypes.func.isRequired,
 };
