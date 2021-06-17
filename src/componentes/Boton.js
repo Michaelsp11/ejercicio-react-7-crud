@@ -1,7 +1,7 @@
 export const Boton = (props) => {
-  const { tipo, texto, className } = props;
+  const { texto, className, botonDesactivado, accion } = props;
   return (
-    <button type={tipo} className={className}>
+    <button className={className} onClick={accion} disabled={botonDesactivado}>
       {texto}
     </button>
   );

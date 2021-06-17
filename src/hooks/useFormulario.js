@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const useFormulario = (datosIniciales) => {
-  const [datos, setDatos] = useState(datosIniciales);
+export const useFormulario = (datosJugador) => {
+  const [datos, setDatos] = useState(datosJugador);
   const setDato = (e) => {
     setDatos({
       ...datos,

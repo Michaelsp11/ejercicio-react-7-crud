@@ -6,7 +6,7 @@ import { Formulario } from "./componentes/Formulario";
 import { jugadoresAPI } from "./datos/jugadores";
 function App() {
   const [jugadores, setJugadores] = useState([...jugadoresAPI]);
-  const [nuevoJugador, setNuevoJugador] = useState({
+  const [jugador, setJugador] = useState({
     id: null,
     nombre: "",
     apellidos: "",
@@ -15,12 +15,49 @@ function App() {
     opinion: "",
   });
   const [showFormulario, setShowFormulario] = useState(false);
-  const [accion, setAccion] = useState("");
-  const [idJugador, setIdJugador] = useState(null);
-
+  const [botonDesactivado, setBotonDesactivado] = useState(true);
+  const guardarJugador = (nuevoJugador) => {
+    if (nuevoJugador.id !== null) {
+      editarJugador(nuevoJugador);
+    } else {
+      crearJugador(nuevoJugador);
+    }
+    setShowFormulario(false);
+  };
+  const getLastId = () =>
+    jugadores.reduce((acumulador, jugador) => {
+      if (acumulador < jugador.id) {
+        acumulador = jugador.id;
+      }
+      return acumulador;
+    }, 0);
+  const crearJugador = (jugador) => {
+    const ultimoId = getLastId();
+    setJugadores([...jugadores, { ...jugador, id: ultimoId + 1 }]);
+  };
+  const editarJugador = (nuevoJugador) => {
+    setJugadores(
+      jugadores.map((jugador) => {
+        if (jugador.id === nuevoJugador.id) {
+          return {
+            ...jugador,
+            nombre: nuevoJugador.nombre,
+            apellidos: nuevoJugador.apellidos,
+            edad: nuevoJugador.edad,
+            posicion: nuevoJugador.posicion,
+            opinion: nuevoJugador.opinion,
+          };
+        }
+        return jugador;
+      })
+    );
+  };
   return (
     <>
-      <Cabecera />
+      <Cabecera
+        showFormulario={showFormulario}
+        setShowFormulario={setShowFormulario}
+      />
       <main className="container my-3">
         <div className="row">
           <div className="col-12">
@@ -34,19 +71,16 @@ function App() {
                 </ul>
               </>
             )}
-            {showFormulario && accion === "Crear" && (
+            {showFormulario && (
               <>
-                <h2>Crear jugador:</h2>
-                <Formulario jugador={nuevoJugador} btnText={accion} />
+                <Formulario
+                  jugador={jugador}
+                  guardarDatos={guardarJugador}
+                  botonDesactivado={botonDesactivado}
+                  setBotonDesactivado={setBotonDesactivado}
+                />
               </>
             )}
-            {/* {showFormulario &&
-              accion === "editar" &&
-              jugadores.filter((jugador) => {
-                if (jugador.id === idJugador) {
-                  return <Formulario jugador={jugador} />;
-                }
-              })} */}
           </div>
         </div>
       </main>
