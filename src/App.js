@@ -22,6 +22,14 @@ function App() {
     } else {
       crearJugador(nuevoJugador);
     }
+    setJugador({
+      id: null,
+      nombre: "",
+      apellidos: "",
+      edad: 0,
+      posicion: "",
+      opinion: "",
+    });
   };
   const getLastId = () =>
     jugadores.reduce((acumulador, jugador) => {
