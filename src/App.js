@@ -5,6 +5,7 @@ import { Cabecera } from "./componentes/Cabecera";
 import { Formulario } from "./componentes/Formulario";
 import { jugadoresAPI } from "./datos/jugadores";
 function App() {
+  const posiciones = ["Portero", "Defensa", "Mediocentro", "Delantero"];
   const [jugadores, setJugadores] = useState([...jugadoresAPI]);
   const [jugador, setJugador] = useState({
     id: null,
@@ -88,6 +89,7 @@ function App() {
                 <Formulario
                   jugador={jugador}
                   botonDesactivado={botonDesactivado}
+                  posiciones={posiciones}
                   setBotonDesactivado={setBotonDesactivado}
                   setShowFormulario={setShowFormulario}
                   guardarDatos={guardarJugador}

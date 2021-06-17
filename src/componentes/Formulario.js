@@ -5,6 +5,7 @@ export const Formulario = (props) => {
   const {
     jugador,
     botonDesactivado,
+    posiciones,
     setBotonDesactivado,
     setShowFormulario,
     guardarDatos,
@@ -72,16 +73,21 @@ export const Formulario = (props) => {
         </div>
         <div className="form-group">
           <label htmlFor="posicion">Posicion:</label>
-          <input
-            type="text"
+          <select
+            id="posicion"
             value={posicion}
+            className="form-control"
             onChange={(e) => {
               setDato(e);
               comprobarDatos();
             }}
-            id="posicion"
-            className="form-control"
-          />
+          >
+            {posiciones.map((posicion) => (
+              <option key={posicion} value={posicion}>
+                {posicion}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="opinion">Opinion:</label>
